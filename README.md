@@ -4,17 +4,17 @@
 
 **Deadline: 4th November, 15.00 GMT**
 
-### 1.  [ ] Normalisation (20 marks)
+### 1.  [X] Normalisation (20 marks)
 
 - [X] Sign up and Login to AllTrails
 - [X] Get **Plymbridge Circular** data
-- [ ] Carry out Normalisation to Third Normal Form (3NF) on the trail details.
+- [X] Carry out Normalisation to Third Normal Form (3NF) on the trail details.
 - [X] Provide Un-normalised Form (UNF),
-- [ ] First Normal Form (1NF),
-- [ ] Second Normal Form (2NF),
-- [ ] Third Normal Form 3NF.
-- [ ] Identify attributes for keys.
-- [ ] Draw the partial ERD using the taught notation of soft boxes and crow's feet.
+- [X] First Normal Form (1NF),
+- [X] Second Normal Form (2NF),
+- [X] Third Normal Form 3NF.
+- [X] Identify attributes for keys.
+- [X] Draw the partial ERD using the taught notation of soft boxes and crow's feet.
 
 ### 2. [ ] Final Entity Relationship Diagram (ERD) (15 marks)
 
