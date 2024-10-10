@@ -1,6 +1,6 @@
 # Exercise 1
 
-**Set Exercise 1:  Normalisation: 20 marks**
+**Set-exercise 1:  Normalisation: 20 marks**
 
 Carry out Normalisation to Third Normal Form (3NF) on the trail detailspage of a trail such as the Plymouth  Waterfront  or  PlymbridgeCircular,  found  on  the  website.   Do  not  include  conditions, reviews,  photos,  activities,  completed,  directions,  printable  map,  share,  more.
 
