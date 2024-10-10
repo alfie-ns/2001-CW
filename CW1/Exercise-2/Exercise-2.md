@@ -11,5 +11,5 @@ Ensure that the ERD offers an accurate representation of the database. Inconsist
 ---
 
 - [ ] Combine initial and partial ERDs to create the final ERD.
-- [ ] Ensure all one-to-one and many-to-many relationships are resolved.
+- [ ] Ensure **all** one-to-one and many-to-many relationships are resolved.
 - [ ] Submit the ERD in the appendix, clearly labelled.
