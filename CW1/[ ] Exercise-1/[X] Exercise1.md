@@ -1,14 +1,14 @@
-# Exercise 1
+# [X] Exercise 1
 
 **Set-exercise 1:  Normalisation: 20 marks**
 
-Carry out Normalisation to Third Normal Form (3NF) on the trail detailspage of a trail such as the Plymouth  Waterfront  or  PlymbridgeCircular,  found  on  the  website.   Do  not  include  conditions, reviews,  photos,  activities,  completed,  directions,  printable  map,  share,  more.
+Carry out Normalisation to Third Normal Form (3NF) on the trail detailspage of a trail such as the Plymouth  Waterfront  or  PlymbridgeCircular,  found  on  the  website.   D**o  not  include  conditions, reviews,  photos,  activities,  completed,  directions,  printable  map,  share,  more.**
 
-**State any assumptions you have made**. Normalise  the  attributes to 3NF  showing  all  intermediate  stages,  namely:  Un-normalised  Form (UNF), First Normal Form (1NF) and Second Normal Form (2NF).
+**State any assumptions you have made**. Normalise the attributes to 3NF showing all intermediate stages, namely:  Un-normalised  Form (UNF), First Normal Form (1NF) and Second Normal Form (2NF).
 
 Be careful to identify the attributes used for keys.  Additional marks will NOT be gained for optimising the results of 3NF, though you may still find it worthwhile to optimise your results.
 
-You must name the 3NF relations. Draw the partial ERD using the taught notation of soft boxes and crows feet. This should be included at the end of the Set Exercise 1 report section, clearly labelled. This partial ERDwill be assessed as part of Set Exercise 2
+You must name the 3NF relations. Draw the partial ERD using the taught notation of soft boxes and crows feet. This should be included at the end of the Set Exercise 1 report section, clearly labelled. This partial ERD will be assessed as part of Set Exercise 2
 
 ---
 
