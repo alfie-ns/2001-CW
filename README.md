@@ -4,45 +4,50 @@
 
 **Deadline: 4th November, 15.00 GMT**
 
-### 1. Normalisation (20 marks)
+### 1.  [ ] Normalisation (20 marks)
 
-- Carry out Normalisation to Third Normal Form (3NF) on the trail details.
-- Provide Un-normalised Form (UNF), First Normal Form (1NF), Second Normal Form (2NF), and 3NF.
-- Identify attributes for keys.
-- Draw the partial ERD using the taught notation of soft boxes and crow's feet.
+- [X] Sign up and Login to AllTrails
+- [X] Get **Plymbridge Circular** data
+- [ ] Carry out Normalisation to Third Normal Form (3NF) on the trail details.
+- [X] Provide Un-normalised Form (UNF),
+- [ ] First Normal Form (1NF),
+- [ ] Second Normal Form (2NF),
+- [ ] Third Normal Form 3NF.
+- [ ] Identify attributes for keys.
+- [ ] Draw the partial ERD using the taught notation of soft boxes and crow's feet.
 
-### 2. Final Entity Relationship Diagram (ERD) (15 marks)
+### 2. [ ] Final Entity Relationship Diagram (ERD) (15 marks)
 
-- Combine initial and partial ERDs to create the final ERD.
-- Ensure all one-to-one and many-to-many relationships are resolved.
-- Submit the ERD in the appendix, clearly labelled.
+- [ ] Combine initial and partial ERDs to create the final ERD.
+- [ ] Ensure all one-to-one and many-to-many relationships are resolved.
+- [ ] Submit the ERD in the appendix, clearly labelled.
 
-### 3. Database Design (15 marks)
+### 3. [ ] Database Design (15 marks)
 
 - Complete Field Definition grids for the attributes of each entity.
 - Include the grids in the appendix to justify choices.
 
-### 4. SQL Implementation (15 marks)
+### 4. [ ] SQL Implementation (15 marks)
 
 - Implement at least 3 tables (including a link entity) in SQL on the SQL Server at dist-6-505.uopnet.plymouth.ac.uk.
 - Add sufficient demo data for testing.
 - Use the schema "CW1" for implementation.
 - Provide screenshots showing the data in each table.
 
-### 5. SQL View (10 marks)
+### 5. [ ] SQL View (10 marks)
 
 - Implement a view that combines data from at least two tables.
 - Ensure sufficient demo data is present.
 - Use the schema "CW1".
 - Provide screenshots of the view and SQL code.
 
-### 6. Stored Procedures (15 marks)
+### 6. [ ] Stored Procedures (15 marks)
 
 - Implement CRUD operations for one table using stored procedures.
 - Provide screenshots before and after testing the procedures.
 - Use the schema "CW1".
 
-### 7. SQL Trigger (10 marks)
+### 7. [ ] SQL Trigger (10 marks)
 
 - Implement a trigger to log the addition of new trails.
 - Create a log table to store details (e.g., who added, timestamp).
