@@ -22,7 +22,7 @@ You must name the 3NF relations. Draw the partial ERD using the taught notation 
 ---
 
 **1NF: no repeating groups.**
-Trail: Name, Length, Elevation, Route Type, Difficulty, Estimated Time, Location(FK)
+Trail: Name, Length, Elevation, Route Type, Difficulty, Estimated Time, Location(**FK**)
 Location: LocationID, Country, City, County
 
 ---
