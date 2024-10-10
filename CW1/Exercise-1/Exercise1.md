@@ -21,6 +21,12 @@ You must name the 3NF relations. Draw the partial ERD using the taught notation 
 
 ---
 
+**UNF:**
+
+AllTrails: Name, Length, Elevation, Route Type, Difficulty, Estimated Time, Location
+
+---
+
 **1NF: no repeating groups.**
 Trail: Name, Length, Elevation, Route Type, Difficulty, Estimated Time, Location(**FK**)
 Location: LocationID, Country, City, County
@@ -28,7 +34,7 @@ Location: LocationID, Country, City, County
 ---
 
 **2NF: no partial dependencies; a partial dependency is when a non-key attribute is dependent on only part of the key.**
-Trail: TrailID, Name, Length, Elevation, Route Type, Difficulty, Estimated Time, LocationID(FK)
+Trail: TrailID, Name, Length, Elevation, Route Type, Difficulty, Estimated Time, LocationID(**FK**)
 Location: LocationID, Country, City, County
 
 ---
