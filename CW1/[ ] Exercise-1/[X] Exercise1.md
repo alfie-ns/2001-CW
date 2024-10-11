@@ -15,9 +15,7 @@ You must name the 3NF relations. Draw the partial ERD using the taught notation 
 **"I'm sure I can just draw this on paper as .drawio so confusing"**
 
 - [X] Get **Plymbridge Circular** data(Trail Name, Length, Elevation, Route Type, Difficulty, Estimated Time, Location)
-- [ ] Organise data from un-normalised form to 3NF; draw an Entity Relationship Diagram for each instance of UNF->1NF->2NF->3NF
-- [ ] Combine all ERDs into one
-- [ ] Create a database schema from the ERD
+- [X] Organise data from un-normalised form to 3NF; make an Entity Relationship Diagram for each instance of UNF->1NF->2NF->3NF
 
 ---
 
