@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Enhanced Git Commit Importance Script
+# Git Commit Importance Script
 
 set -e  # Exit immediately if a command exits with a non-zero status
 
