@@ -35,6 +35,7 @@ start_container() {
 
 kill_container() {
     print_bold "Killing Azure SQL Edge container..."
+    backup_database
     docker stop $CONTAINER_NAME
     docker rm $CONTAINER_NAME
     print_bold "Container stopped and removed."
