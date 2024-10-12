@@ -15,17 +15,18 @@
 - [X] Third Normal Form 3NF.
 - [X] Identify attributes for keys.
 - [X] Draw the partial ERD using the taught notation of soft boxes and crow's feet.
+- [ ] Submit this in the appendix, clearly labelled
 
-### 2. [ ] Final Entity Relationship Diagram (ERD) (15 marks)
+### 2. [X] Final Entity Relationship Diagram (ERD) (15 marks)
 
-- [ ] Combine initial and partial ERDs to create the final ERD.
-- [ ] Ensure all one-to-one and many-to-many relationships are resolved.
+- [X] Combine initial and partial ERDs to create the final ERD.
+- [X] Ensure all one-to-one and many-to-many relationships are resolved.
 - [ ] Submit the ERD in the appendix, clearly labelled.
 
-### 3. [ ] Database Design (15 marks)
+### 3. [X] Database Design (15 marks)
 
-- Complete Field Definition grids for the attributes of each entity.
-- Include the grids in the appendix to justify choices.
+- [X] Complete Field Definition grids for the attributes of each entity.
+- [ ] Include the grids in the appendix to justify choices.
 
 ### 4. [ ] SQL Implementation (15 marks)
 
