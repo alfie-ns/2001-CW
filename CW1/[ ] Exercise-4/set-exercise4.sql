@@ -1,4 +1,4 @@
--- Creates the CW1 schema if it doesn't exist
+-- Creates the CW1 schema if it doesn't already exist
 IF NOT EXISTS (SELECT * FROM sys.schemas WHERE name = 'CW1') -- if it doesn't already exist; select everything from sys.schemas where the name is CW1
 BEGIN -- begin the following block of code
     EXEC('CREATE SCHEMA CW1') -- Execute schema creation CW1
