@@ -30,10 +30,10 @@
 
 ### 4. [ ] SQL Implementation (15 marks)
 
-- Implement at least 3 tables (including a link entity) in SQL on the SQL Server at dist-6-505.uopnet.plymouth.ac.uk.
-- Add sufficient demo data for testing.
-- Use the schema "CW1" for implementation.
-- Provide screenshots showing the data in each table.
+- [X] Implement at least 3 tables (including a link entity) in SQL on the SQL Server at dist-6-505.uopnet.plymouth.ac.uk.
+- [X] Add sufficient demo data for testing.
+- [X] Use the schema "CW1" for implementation.
+- [ ] Provide screenshots showing the data in each table in set exercises document.
 
 ### 5. [ ] SQL View (10 marks)
 
