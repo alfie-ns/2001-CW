@@ -5,11 +5,11 @@ SQL_PASSWORD="C0mp2001!"
 IMAGE_NAME="mcr.microsoft.com/azure-sql-edge:latest"
 BACKUP_DIR="./backups"
 
-print_bold() {
+print_bold() { # function to print bold text
     echo -e "\033[1m$1\033[0m"
 }
 
-cleanup() {
+cleanup() { # function to stop and remove all containers and volumes
     print_bold "Cleaning up existing containers and volumes..."
     docker stop $(docker ps -a -q)
     docker rm $(docker ps -a -q)
@@ -17,7 +17,7 @@ cleanup() {
     print_bold "All containers and volumes have been removed."
 }
 
-start_container() {
+start_container() { # function to start the Azure SQL Edge container; sign in
     print_bold "Starting Azure SQL Edge container..."
     docker run -e "ACCEPT_EULA=1" \
                -e "MSSQL_SA_PASSWORD=$SQL_PASSWORD" \
