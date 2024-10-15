@@ -15,16 +15,20 @@ END -- end if statement
     - FOREIGN KEY (LocationID) REFERENCES CW1.Location(LocationID) is used to establish a foreign key referencing the Location table.
       relationship between the LocationID column in the Trail table and the LocationID column in the Location table.
     - FOREIGN KEY (UserEmail) REFERENCES CW1.[User](Email) is used to establish a foreign key referencing the User table.
-    - NVARCHAR(National Variable Character) is used to store Unicode character data with a specified length; VARCHAR is used for non-Unicode character data.
+    - VARCHAR (Variable Character) is used to store variable-length string character data; the length of the stored data can vary, and the maximum allowed length is specified in the brackets.
+    - FLOAT is used to store length as a floating-point number as it's in kilometers thus needs to accoung for the metres/decimal values.
+    - Desciption's maximum length is set to 1000 characters.
+    - UserEmail is a NVARCHAR data type to allow unicode characters to handle international emails; max length set to 255
+    - NOT NULL is used to enforce data in the column.
 */
 CREATE TABLE CW1.Trail (
     TrailID INT PRIMARY KEY IDENTITY(1,1),
-    TrailName NVARCHAR(255) NOT NULL,
+    TrailName VARCHAR(255) NOT NULL,
     Length FLOAT NOT NULL,
     ElevationGain INT NOT NULL,
-    RouteType NVARCHAR(50) NOT NULL,
-    Description NVARCHAR(MAX),
-    Difficulty NVARCHAR(50) NOT NULL,
+    RouteType VARCHAR(50) NOT NULL,
+    Description VARCHAR(1000),
+    Difficulty VARCHAR(50) NOT NULL,
     LocationID INT NOT NULL,
     UserEmail NVARCHAR(255) NOT NULL,
     FOREIGN KEY (LocationID) REFERENCES CW1.Location(LocationID),
@@ -34,22 +38,28 @@ CREATE TABLE CW1.Trail (
 -- Create Location table in CW1 schema
 /*
     This table state LocationID as the primary key with auto-increment, City, County, and Country as not null constraints,
-    and their respective data types and lengths.
+    and their respective data types and lengths. 
 */
 CREATE TABLE CW1.Location (
     LocationID INT PRIMARY KEY IDENTITY(1,1),
-    City NVARCHAR(100) NOT NULL,
-    County NVARCHAR(100) NOT NULL,
-    Country NVARCHAR(100) NOT NULL
+    City VARCHAR(100) NOT NULL,
+    County VARCHAR(100) NOT NULL,
+    Country VARCHAR(100) NOT NULL
 );
 ---------------------------------------------------------------------------------------------------------------------------------------
 -- Create User table in CW1 schema
 /*
-    This table state Email as the primary key, UserName and Password as not null constraints, and their respective data types and lengths.
+    This table sets Email as the primary key, with UserName and Password as not null constraints,
+    along with their respective data types and lengths. Although NVARCHAR allocates twice the
+    storage space compared to VARCHAR, it is used for the Email and Password columns to support 
+    international characters and symbols in passwords, respectively.
+
+    This approach for the password is not usually used, however I think it will
+    make a password more secure if they can use special characters and symbols.
 */
 CREATE TABLE CW1.[User] (
-    Email NVARCHAR(255) PRIMARY KEY, 
-    UserName NVARCHAR(100) NOT NULL, 
+    Email VARCHAR(255) PRIMARY KEY, 
+    UserName VARCHAR(100) NOT NULL, 
     Password NVARCHAR(255) NOT NULL 
 );
 ---------------------------------------------------------------------------------------------------------------------------------------
@@ -126,7 +136,7 @@ FROM
     JOIN CW1.[User] u ON t.UserEmail = u.Email
     JOIN CW1.Location l ON t.LocationID = l.LocationID
 ORDER BY 
-    t.Difficulty, t.Length DESC;
+    t.Difficulty, t.Length DESC; -- DESC = descending order
 
 -- Testing queries -----------------------------------------------------------------------------------------------------------------------
 
