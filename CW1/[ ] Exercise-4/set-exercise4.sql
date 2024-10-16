@@ -1,25 +1,15 @@
 -- Creates the CW1 schema if it doesn't already exist
-IF NOT EXISTS (SELECT * FROM sys.schemas WHERE name = 'CW1') -- if it doesn't already exist; select everything from sys.schemas where the name is CW1
+IF NOT EXISTS (SELECT * FROM sys.schemas WHERE name = 'CW1') -- if the schema doesn't already exist in the systems catalog; select everything from sys.schemas where the name is CW1
 BEGIN -- begin the following block of code
     EXEC('CREATE SCHEMA CW1') -- Execute schema creation CW1
 END -- end if statement
 ---------------------------------------------------------------------------------------------------------------------------------------
 -- Create Trail table in CW1 schema
 /*
-    This table state TrailID as the primary key with auto-increment, TrailName, Length, ElevationGain, RouteType, Difficulty, and UserEmail as not null constraints,
-    and their respective data types and lengths. Description is also included as a column with a maximum length.
-    LocationID and UserEmail are foreign keys that reference the Location and User table respectively.
-
-    - IDENTITY(1,1) is used to auto-increment the TrailID starting from 1 with an increment of 1.
-    - PRIMARY KEY (TrailID) is used to set the TrailID column as the primary key of the table.
-    - FOREIGN KEY (LocationID) REFERENCES CW1.Location(LocationID) is used to establish a foreign key referencing the Location table.
-      relationship between the LocationID column in the Trail table and the LocationID column in the Location table.
-    - FOREIGN KEY (UserEmail) REFERENCES CW1.[User](Email) is used to establish a foreign key referencing the User table.
-    - VARCHAR (Variable Character) is used to store variable-length string character data; the length of the stored data can vary, and the maximum allowed length is specified in the brackets.
-    - FLOAT is used to store length as a floating-point number as it's in kilometers thus needs to accoung for the metres/decimal values.
-    - Desciption's maximum length is set to 1000 characters.
-    - UserEmail is a NVARCHAR data type to allow unicode characters to handle international emails; max length set to 255
-    - NOT NULL is used to enforce data in the column.
+    This table state TrailID as the primary key with auto-increment; TrailName, Length, ElevationGain, RouteType, 
+    Difficulty, and UserEmail as NOT null constraints, and their respective data types and lengths. Description
+    is also included as a column with a maximum length. LocationID and UserEmail are foreign keys that reference
+    the Location and User table, respectively.
 */
 CREATE TABLE CW1.Trail (
     TrailID INT PRIMARY KEY IDENTITY(1,1),
@@ -51,16 +41,13 @@ CREATE TABLE CW1.Location (
 /*
     This table sets Email as the primary key, with UserName and Password as not null constraints,
     along with their respective data types and lengths. Although NVARCHAR allocates twice the
-    storage space compared to VARCHAR, it is used for the Email and Password columns to support 
-    international characters and symbols in passwords, respectively.
-
-    This approach for the password is not usually used, however I think it will
-    make a password more secure if they can use special characters and symbols.
+    storage space compared to VARCHAR, it is used for the Email column to support 
+    international characters emails.
 */
 CREATE TABLE CW1.[User] (
-    Email VARCHAR(255) PRIMARY KEY, 
+    Email NVARCHAR(255) PRIMARY KEY, 
     UserName VARCHAR(100) NOT NULL, 
-    Password NVARCHAR(255) NOT NULL 
+    Password VARCHAR(255) NOT NULL 
 );
 ---------------------------------------------------------------------------------------------------------------------------------------
 -- Insert sample data into Location table
