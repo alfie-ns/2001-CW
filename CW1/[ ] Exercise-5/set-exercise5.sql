@@ -9,6 +9,7 @@ SELECT
     t.Description AS Trail_Description,
     t.Difficulty AS Difficulty_Level,
     l.City AS Location_City,
+    l.County AS Location_County,
     l.Country AS Location_Country,
     u.UserName AS Creator_Name
 FROM 
