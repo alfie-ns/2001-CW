@@ -13,14 +13,14 @@ END -- end if statement
 */
 CREATE TABLE CW1.Trail (
     TrailID INT PRIMARY KEY IDENTITY(1,1),
-    TrailName VARCHAR(255) NOT NULL,
+    TrailName VARCHAR(75) NOT NULL, -- can't find any names above 50 characters; 75 == safe bet
     Length FLOAT NOT NULL,
     ElevationGain INT NOT NULL,
-    RouteType VARCHAR(50) NOT NULL,
-    Description VARCHAR(1000),
-    Difficulty VARCHAR(50) NOT NULL,
+    RouteType VARCHAR(15) NOT NULL, -- Out & Back || Loop || Point to Point
+    Description VARCHAR(500), -- Average character-length of a description is around 400; thus 500 == safe bet
+    Difficulty VARCHAR(10) NOT NULL, -- Easy || Moderate || Hard
     LocationID INT NOT NULL,
-    UserEmail NVARCHAR(255) NOT NULL,
+    UserEmail NVARCHAR(254) NOT NULL, -- 254 is legal maximum length for an email address
     FOREIGN KEY (LocationID) REFERENCES CW1.Location(LocationID),
     FOREIGN KEY (UserEmail) REFERENCES CW1.[User](Email)
 );
@@ -30,7 +30,7 @@ CREATE TABLE CW1.Trail (
     This table state LocationID as the primary key with auto-increment, City, County, and Country as not null constraints,
     and their respective data types and lengths. 
 */
-CREATE TABLE CW1.Location (
+CREATE TABLE CW1.Location ( -- 100 == safe bet for all location columns
     LocationID INT PRIMARY KEY IDENTITY(1,1),
     City VARCHAR(100) NOT NULL,
     County VARCHAR(100) NOT NULL,
@@ -44,8 +44,8 @@ CREATE TABLE CW1.Location (
     storage space compared to VARCHAR, it is used for the Email column to support 
     international characters emails.
 */
-CREATE TABLE CW1.[User] (
-    Email NVARCHAR(255) PRIMARY KEY, 
+CREATE TABLE CW1.[User] ( -- 254 == legal email maximum length; 100 == safe bet for username; 255 == safe bet for hashed password
+    Email NVARCHAR(254) PRIMARY KEY, 
     UserName VARCHAR(100) NOT NULL, 
     Password VARCHAR(255) NOT NULL 
 );
