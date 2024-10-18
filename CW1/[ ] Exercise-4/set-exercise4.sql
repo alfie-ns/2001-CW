@@ -1,5 +1,5 @@
 -- Creates the CW1 schema if it doesn't already exist
-IF NOT EXISTS (SELECT * FROM sys.schemas WHERE name = 'CW1') -- if the schema doesn't already exist in the systems catalog; select everything from sys.schemas where the name is CW1
+IF NOT EXISTS (SELECT * FROM sys.schemas WHERE name = 'CW1') -- if the schema doesn't already exist in the systems catalogue; select everything from sys.schemas where the name is CW1
 BEGIN -- begin the following block of code
     EXEC('CREATE SCHEMA CW1') -- Execute schema creation CW1
 END -- end if statement
@@ -127,19 +127,17 @@ ORDER BY
 
 -- Testing queries -----------------------------------------------------------------------------------------------------------------------
 
--- Test foreign key constraint
+-- Check current data in Trail table
+SELECT * FROM CW1.Trail;
+
+-- Verify row counts individually
+SELECT COUNT(*) AS LocationCount FROM CW1.Location;
+SELECT COUNT(*) AS UserCount FROM CW1.[User];
+SELECT COUNT(*) AS TrailCount FROM CW1.Trail;
+
+-- Check for NULL values
+SELECT * FROM CW1.Trail WHERE TrailName IS NULL OR Length IS NULL OR Difficulty IS NULL;
+
+-- This should fail
 INSERT INTO CW1.Trail (TrailName, Length, ElevationGain, RouteType, Difficulty, LocationID, UserEmail)
 VALUES ('Test Trail', 10, 100, 'Loop', 'Easy', 999, 'nonexistent@example.com');
--- This should fail due to foreign key constraints
-
--- Verify row counts
-SELECT 'Location' AS TableName, COUNT(*) AS RowCount FROM CW1.Location
-UNION ALL
-SELECT 'User' AS TableName, COUNT(*) AS RowCount FROM CW1.[User]
-UNION ALL
-SELECT 'Trail' AS TableName, COUNT(*) AS RowCount FROM CW1.Trail;
--- This should match the number of INSERT statements for each table
-
--- Check for unexpected NULL values
-SELECT * FROM CW1.Trail WHERE TrailName IS NULL OR Length IS NULL OR Difficulty IS NULL;
--- This should return no rows if all required fields are properly filled
