@@ -1,5 +1,9 @@
 #!/bin/bash
 
+print_bold() {
+    echo -e "\033[1m$1\033[0m"
+}
+
 # check if venv exists
 if [ ! -d "venv" ]; then
     print_bold "Creating new virtual environment..."
