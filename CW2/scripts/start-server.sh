@@ -6,7 +6,6 @@ print_bold() {
     echo -e "\033[1m$1\033[0m"
 }
 
-./scripts/setup.sh # run setup script
 if ./scripts/django-migrate.sh; then
     print_bold "Starting Django server..."
     cd cw2_trailapi # change directory to django project
