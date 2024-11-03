@@ -15,45 +15,45 @@
 - [X] Third Normal Form 3NF.
 - [X] Identify attributes for keys.
 - [X] Draw the partial ERD using the taught notation of soft boxes and crow's feet.
-- [ ] Submit this in the appendix, clearly labelled
+- [X] Submit this in the appendix, clearly labelled
 
 ### 2. [X] Final Entity Relationship Diagram (ERD) (15 marks)
 
 - [X] Combine initial and partial ERDs to create the final ERD.
 - [X] Ensure all one-to-one and many-to-many relationships are resolved.
-- [ ] Submit the ERD in the appendix, clearly labelled.
+- [X] Submit the ERD in the appendix, clearly labelled.
 
 ### 3. [X] Database Design (15 marks)
 
 - [X] Complete Field Definition grids for the attributes of each entity.
-- [ ] Include the grids in the appendix to justify choices.
+- [X] Include the grids in the appendix to justify choices.
 
-### 4. [ ] SQL Implementation (15 marks)
+### 4. [X] SQL Implementation (15 marks)
 
 - [X] Implement at least 3 tables (including a link entity) in SQL on the SQL Server at dist-6-505.uopnet.plymouth.ac.uk.
 - [X] Add sufficient demo data for testing.
 - [X] Use the schema "CW1" for implementation.
-- [ ] Provide screenshots showing the data in each table in set exercises document.
+- [X] Provide screenshots showing the data in each table in set exercises document.
 
-### 5. [ ] SQL View (10 marks)
+### 5. [X] SQL View (10 marks)
 
-- Implement a view that combines data from at least two tables.
-- Ensure sufficient demo data is present.
-- Use the schema "CW1".
-- Provide screenshots of the view and SQL code.
+- [X] Implement a view that combines data from at least two tables.
+- [X] Ensure sufficient demo data is present.
+- [X] Use the schema "CW1".
+- [X] Provide screenshots of the view and SQL code.
 
-### 6. [ ] Stored Procedures (15 marks)
+### 6. [X] Stored Procedures (15 marks)
 
-- Implement CRUD operations for one table using stored procedures.
-- Provide screenshots before and after testing the procedures.
-- Use the schema "CW1".
+- [X] Implement CRUD operations for one table using stored procedures.
+- [X] Provide screenshots before and after testing the procedures.
+- [X] Use the schema "CW1".
 
-### 7. [ ] SQL Trigger (10 marks)
+### 7. [X] SQL Trigger (10 marks)
 
-- Implement a trigger to log the addition of new trails.
-- Create a log table to store details (e.g., who added, timestamp).
-- Provide screenshots of the trigger in action.
-- Use the schema "CW1".
+- [X] Implement a trigger to log the addition of new trails.
+- [X] Create a log table to store details (e.g., who added, timestamp).
+- [X] Provide screenshots of the trigger in action.
+- [X] Use the schema "CW1".
 
 ### Deliverable:
 
