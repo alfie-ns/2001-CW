@@ -1,16 +1,23 @@
 #!/bin/bash
-source venv/bin/activate # activate virtual environment
 
-# Function to print bold text
-print_bold() {
-    echo -e "\033[1m$1\033[0m"
-}
-
-./scripts/setup.sh # run setup script
-if ./scripts/django-migrate.sh; then
-    print_bold "Starting Django server..."
-    cd cw2_trailapi # change directory to django project
-    python3 manage.py runserver # start django server if migration successful
+# check if venv exists
+if [ ! -d "venv" ]; then
+    print_bold "Creating new virtual environment..."
+    python3 -m venv venv
+    print_bold "Virtual environment created!"
 else
-    print_bold "Django server failed to migrate thus start..."
+    print_bold "Virtual environment already exists; proceeding straight to activation..."
+    source ./venv/bin/activate || echo "Failed to activate virtual environment"; exit 1;
 fi
+
+echo "Virtual environment activated"
+
+# run the setup script
+./scripts/setup.sh || echo "Setup failed"; exit 1; 
+
+# run migrations
+./scripts/django-migrate.sh || echo "Migration failed"; exit 1; 
+
+# start the Django server
+echo "Starting Django server..."
+./scripts/start-server.sh || echo "Failed to start Django server"; exit 1;
