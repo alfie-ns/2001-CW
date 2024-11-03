@@ -11,7 +11,11 @@ if [ ! -d "venv" ]; then
     print_bold "Virtual environment created!"
 else
     print_bold "Virtual environment already exists; proceeding straight to activation..."
-    source ./venv/bin/activate || echo "Failed to activate virtual environment"; exit 1;
+    source ./venv/bin/activate
+    ./scripts/setup.sh || echo "Setup failed"; exit 1;
+    ./scripts/django-migrate.sh || echo "Migration failed"; exit 1;
+    print_bold "Starting Django server..."
+    ./scripts/start-server.sh || echo "Failed to start Django server"; exit 1;
 fi
 
 echo "Virtual environment activated"
