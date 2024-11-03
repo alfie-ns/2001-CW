@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework', # Django REST framework
+    'corsheaders', # Django CORS headers
+    'drf_yasg', # Django REST framework(Yet Another Swagger Generator)
+    'api' # custom django-app for API
 ]
 
 MIDDLEWARE = [
