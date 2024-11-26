@@ -66,36 +66,94 @@
 
 **Deadline: 7th January, 15.00 GMT**
 
-### 1. Introduction (6 marks)
+**Typically, when an .env file is used, it is git-ignored; however, for this assessment I'll keep it in the repo as it does not contain sensitive data.**
 
-- Introduce the document, with links to your GitHub repository and hosted micro-service.
+
+### 1. Introduction (6 marks)
+- [ ] good problem statement and objectives
+- [ ] overview of technical stack and architecture choices with justification
+- [ ] overview of key features and innovations
+- [ ] links to hosted service and repository
 
 ### 2. Background (4 marks)
-
-- Outline the micro-service and explain its relevance to the Trail Application.
+- [ ] analysis of existing trail applications and APIs
+- [ ] good justification for microservice architecture choice
+- [ ] good discussion of industry best practices for similar services
+- [ ] analysis of target users and stakeholders
 
 ### 3. Design (30 marks)
 
-- Provide UML diagrams for the micro-service design.
-- Include an evolved logical ERD based on set exercises and feedback.
+#### UML Diagrams
+- [ ] class diagrams showing full API structure
+- [ ] sequence diagrams for key API interactions
+- [ ] component diagram showing microservice architecture
+- [ ] activity diagrams for complex workflows
 
-### 4. Legal, Social, Ethical, and Professional (LSEP) (20 marks)
+#### ERD & Database
+- [ ] detailed explanation of ERD evolution from CW1
+- [ ] justification for any changes/improvements
+- [ ] database optimisation strategies
+- [ ] schema versioning considerations
 
-- Discuss how you addressed information privacy, integrity, security, and data preservation.
-- Use Harvard referencing for literature.
+### 4. LSEP (20 marks)
+
+#### Security
+- [ ] authentication & authorisation implementation
+- [ ] data encryption strategies
+- [ ] GDPR compliance measures 
+- [ ] API rate limiting and security headers
+
+#### Professionalism
+- [ ] code quality standards and tools used
+- [ ] good documentation
+- [ ] test methodology 
+- [ ] backup and disaster-proof strategies
 
 ### 5. Implementation (30 marks)
 
-- Discuss the micro-service implementation, including code samples where necessary.
-- Link the implementation to your GitHub repository.
-- Ensure the code meets RESTful API standards with appropriate endpoints.
+#### API Development
+- [ ] RESTful best practices implementation
+- [ ] Comprehensive error handling
+- [ ] request validation
+- [ ] response formatting
+
+#### Code Quality
+- [ ] clean code principles
+- [ ] design patterns used
+- [ ] performance optimisations 
+- [ ] documentation (Swagger/OpenAPI)
+
+#### Features
+- [ ] CRUD operations
+- [ ] search/filter 
+- [ ] pagination
+- [ ] caching 
 
 ### 6. Evaluation (10 marks)
 
-- Provide evidence of testing.
-- Reflect on areas for improvement and potential future work.
+#### Testing
+- [ ] unit tests with good coverage
+- [ ] integration tests
+- [ ] performance testing results
+- [ ] security testing
 
-### Deliverables:
+#### Analysis
+- [ ] metrics and KPIs
+- [ ] performance benchmarks
+- [ ] user feedback (if possible)
+- [ ] critical evaluation against requirements
 
-- Host the micro-service on web.socem.plymouth.ac.uk.
-- Submit the report as a PDF (max. 2000 words) with links to your GitHub repo and hosted service.
+### Additional Considerations
+- [ ] innovative-creative feature
+- [ ] good error handling
+- [ ] good deployment strategy
+- [ ] monitoring and logging
+- [ ] scalability considerations
+- [ ] good documentation
+- [ ] code maintainability
+- [ ] performance optimisation
+
+#### Deliverables:
+
+- [ ] Host the micro-service on web.socem.plymouth.ac.uk.
+- [ ] Submit the report as a PDF (max. 2000 words) with links to your GitHub repo and hosted service.
