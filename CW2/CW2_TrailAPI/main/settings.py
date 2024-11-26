@@ -11,7 +11,12 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-import os # for env. variables
+import os, ssl
+from dotenv import load_dotenv # for env. variables
+ssl._create_default_https_context = ssl._create_unverified_context
+
+load_dotenv() # load in variables
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -80,19 +85,18 @@ WSGI_APPLICATION = 'main.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mssql', # Microsoft SQL Server
+        'ENGINE': 'mssql',
         'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'), # university server
+        'HOST': os.getenv('DB_HOST'),
         'PORT': '1433', # default port for SQL Server
-        'OPTIONS': { # additional options; not mandatory
-            'driver': 'ODBC Driver 18 for SQL Server', # SQL Server driver
-            'trustServerCertificate': 'yes', # always trust certificate
-        },
+        'OPTIONS': {
+            'driver': 'ODBC Driver 18 for SQL Server', 
+            'extra_params': 'TrustServerCertificate=yes;Encrypt=yes;', # ensure connection
+        }
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
