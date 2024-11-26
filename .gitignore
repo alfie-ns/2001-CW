@@ -4,4 +4,6 @@ __pycache__/
 *.log
 .vscode/
 *venv/
-*.env
+#*.env; if in production, use .env to secure secretive variables
+
+
