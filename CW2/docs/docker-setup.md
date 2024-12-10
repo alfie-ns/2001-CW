@@ -192,3 +192,8 @@ docker ps
 ```
 
 The command show you all running containers, their IDs, names, status, and port mappings.
+
+---
+
+- [ ] Please include the link to your GitHub repo and also the `<username>`/<image_name> combination for your docker image at the bottom of the first page.
+- [ ] Make sure you have pulled your image from Docker Hub successfully so that we can download and mark.
