@@ -22,13 +22,15 @@ WORKDIR /app
 COPY . .
 
 # install dependencies
+RUN python -m venv venv
+RUN source venv/bin/activate
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 # clean up
 RUN apt-get -y clean
 
-# expose port
+# expose port 8000 (Django's default port)
 EXPOSE 8000
 
 # start Django server

@@ -5,5 +5,7 @@ __pycache__/
 .vscode/
 *venv/
 #*.env; if in production, use .env to secure secretive variables
+# however for this project I will allow the .env to NOT be ignored for 
+# seamless running of the server
 
 

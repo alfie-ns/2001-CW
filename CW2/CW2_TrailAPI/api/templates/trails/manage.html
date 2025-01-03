@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trail Manager</title>
+    <style>
+        body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        
+        #trailForm {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+        
+        input, select {
+            margin: 5px;
+            padding: 5px;
+        }
+        
+        .trail {
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        button {
+            padding: 5px 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Trails</h1>
+    
+    <form id="trailForm">
+        {% csrf_token %}
+        <input type="text" id="name" placeholder="Trail Name" required>
+        <input type="number" id="length" placeholder="Length (km)" step="0.1" required>
+        <select id="difficulty">
+            <option value="Easy">Easy</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Hard">Hard</option>
+        </select>
+        <select id="route_type">
+            <option value="Loop">Loop</option>
+            <option value="Out & Back">Out & Back</option>
+            <option value="Point to Point">Point to Point</option>
+        </select>
+        <select id="city">
+            <option value="Plymouth">Plymouth</option>
+            <option value="Exeter">Exeter</option>
+            <option value="Torquay">Torquay</option>
+        </select>
+        <select id="county">
+            <option value="Devon">Devon</option>
+        </select>
+        <select id="country">
+            <option value="England">England</option>
+            <option value="Wales">Wales</option>
+        </select>
+        <button type="submit">Add Trail</button>
+    </form>
+
+    <div id="trailList">
+        {% for trail in trails %}
+            <div class="trail">
+                <h3>{{ trail.name }}</h3>
+                <p>{{ trail.length }}km - {{ trail.difficulty }}</p>
+                <p>Location: {{ trail.location.city }}, {{ trail.location.county }}, {{ trail.location.country }}</p>
+                <button onclick="editTrail({{ trail.id }})">Edit</button>
+                <button onclick="deleteTrail({{ trail.id }})">Delete</button>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    document.getElementById('trailForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const editingTrailId = this.dataset.editingTrailId;
+        const isEditing = Boolean(editingTrailId);
+        
+        const locationData = {
+            city: document.getElementById('city').value,
+            county: document.getElementById('county').value,
+            country: document.getElementById('country').value
+        };
+
+        try { // try to save/update/create trail, then reload page
+            if (isEditing) {
+                // update existing trail
+                const updatedData = {
+                    name: document.getElementById('name').value,
+                    length: parseFloat(document.getElementById('length').value),
+                    difficulty: document.getElementById('difficulty').value,
+                    location: locationData,
+                    route_type: 'Loop',
+                    description: '',
+                    elevation_gain: 0
+                };
+
+                const updateResponse = await fetch(`/api/trails/${editingTrailId}/`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken'),
+                    },
+                    body: JSON.stringify(updatedData)
+                });
+
+                if (updateResponse.ok) {
+                    window.location.reload();
+                }
+            } else {
+                // create new trail (existing code)
+                const locationResponse = await fetch('/api/locations/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken'),
+                    },
+                    body: JSON.stringify(locationData)
+                });
+                const location = await locationResponse.json();
+
+                const trailData = {
+                    name: document.getElementById('name').value,
+                    length: parseFloat(document.getElementById('length').value),
+                    difficulty: document.getElementById('difficulty').value,
+                    location: {
+                        id: location.id,
+                        city: locationData.city,
+                        county: locationData.county,
+                        country: locationData.country
+                    },
+                    route_type: 'Loop',
+                    description: '',
+                    elevation_gain: 0
+                };
+
+                const trailResponse = await fetch('/api/trails/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken'),
+                    },
+                    body: JSON.stringify(trailData)
+                });
+
+                if (trailResponse.ok) {
+                    window.location.reload();
+                }
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error saving trail');
+        }
+    });
+
+    // Delete functionality
+    async function deleteTrail(id) {
+        if (confirm('Are you sure you want to delete this trail?')) {
+            try {
+                const response = await fetch(`/api/trails/${id}/`, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRFToken': getCookie('csrftoken'),
+                    }
+                });
+                if (response.ok) {
+                    window.location.reload();
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error deleting trail');
+            }
+        }
+    }
+    
+    // Edit/Update functionality
+    async function editTrail(id) {
+        try {
+            const response = await fetch(`/api/trails/${id}/`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+            const trail = await response.json();
+            
+            // fill the form with existing data
+            document.getElementById('name').value = trail.name;
+            document.getElementById('length').value = trail.length;
+            document.getElementById('difficulty').value = trail.difficulty;
+            document.getElementById('city').value = trail.location.city;
+            document.getElementById('county').value = trail.location.county;
+            document.getElementById('country').value = trail.location.country;
+            
+            // change form submission to update instead of create
+            const form = document.getElementById('trailForm');
+            
+            // store the trail ID being edited
+            form.dataset.editingTrailId = id;
+            
+            // change button text to indicate editing
+            form.querySelector('button[type="submit"]').textContent = 'Update Trail';
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error loading trail data');
+        }
+    }
+    </script>
+</body>
+</html>

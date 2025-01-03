@@ -3,16 +3,9 @@ from .models import Trail, Location
 from django.contrib.auth.models import User
 
 '''
-These serialisers convert Django model instances into JSON/XML format, 
-and vice versa; they handle the transformation of:
+    Serializers are used to convert complex data types, such as querysets and model instances;
 
-- Model instances to JSON for API responses
-- JSON data to model instances for database operations
-- Nested relationships between models (Trail -> Location, Trail -> User)
-- Data validation and field type conversion
-
-Each serialiser maps specific model fields to ensure proper data representation
-whilst also maintaining model relationships and data integrity.
+    In this instance, it serialises Location, User and Trail models into JSON format for the API to consume;
 '''
 
 class LocationSerializer(serializers.ModelSerializer): 
@@ -27,9 +20,34 @@ class UserSerializer(serializers.ModelSerializer):
 
 class TrailSerializer(serializers.ModelSerializer):
     location = LocationSerializer()
-    owner = UserSerializer(read_only=True) # prevent user from changing owner
+    owner = UserSerializer(read_only=True)
 
     class Meta:
         model = Trail
         fields = ['id', 'name', 'length', 'elevation_gain', 'route_type', 
                  'description', 'difficulty', 'location', 'owner']
+
+    def create(self, validated_data):
+        location_data = validated_data.pop('location')
+        # create new location
+        location = Location.objects.create(**location_data)
+        trail = Trail.objects.create(location=location, **validated_data)
+        return trail
+
+    def update(self, instance, validated_data):
+        if 'location' in validated_data:
+            location_data = validated_data.pop('location')
+            # create new location for update instead of get_or_create
+            location = Location.objects.create(**location_data)
+            instance.location = location
+        
+        # Update other fields
+        instance.name = validated_data.get('name', instance.name)
+        instance.length = validated_data.get('length', instance.length)
+        instance.difficulty = validated_data.get('difficulty', instance.difficulty)
+        instance.route_type = validated_data.get('route_type', instance.route_type)
+        instance.description = validated_data.get('description', instance.description)
+        instance.elevation_gain = validated_data.get('elevation_gain', instance.elevation_gain)
+        
+        instance.save()
+        return instance

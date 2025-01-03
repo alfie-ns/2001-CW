@@ -30,8 +30,17 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+REST_FRAMEWORK = { # Django REST framework
+    'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler',
+    'NON_FIELD_ERRORS_KEY': 'detail', # key for non-field errors
+}
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+]
 
 # Application definition
 
@@ -46,10 +55,11 @@ INSTALLED_APPS = [
     'rest_framework', # Django REST framework
     'corsheaders', # Django CORS headers
     'drf_yasg', # Django REST framework(Yet Another Swagger Generator)
-    'api' # custom django-app for API
+    'api', # custom django-app for API
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # Django CORS headers
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -64,7 +74,7 @@ ROOT_URLCONF = 'main.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'api', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,7 +94,7 @@ WSGI_APPLICATION = 'main.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default': { # fetch all variables from .env file
         'ENGINE': 'mssql',
         'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('DB_USER'),

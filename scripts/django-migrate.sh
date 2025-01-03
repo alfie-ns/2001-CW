@@ -7,8 +7,6 @@ print_bold() {
 # change to the Django project directory OR exit with failure
 cd cw2/cw2_trailapi || exit 1
 
-source venv/bin/activate
-
 if python3 manage.py makemigrations; then
     print_bold "Migrating..."
     python3 manage.py migrate
