@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-import os, ssl
+import os, ssl, sys
 from dotenv import load_dotenv # for env. variables
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -107,6 +107,13 @@ DATABASES = {
         }
     }
 }
+
+# Unit testing
+if 'test' in sys.argv:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'test_db.sqlite3',
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

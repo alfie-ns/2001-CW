@@ -64,14 +64,13 @@ review_changes() {
     
     while true; do
         print_bold "\nWould you like to push these changes? (y/n): "
-        read -n1 answer # read only one character then auto-terminate
+        read -n1 answer # read only one character then auto-terminate i.e. presses enter
         echo
         case $answer in # if answer y|Y, push; if n|N, commit but don't push
             [Yy]) return 0;;
             [Nn]) 
-                echo "Commit created but not pushed. You can:"
-                echo "1. Push later with 'git push'"
-                echo "2. Undo the commit with 'git reset HEAD~1'"
+                echo "Commit created but not pushed, commit undone..." >&2
+                git reset --soft HEAD~1 # undo the last commit but keep changes
                 return 1;;
             *) echo "Please answer y or n";;
         esac
