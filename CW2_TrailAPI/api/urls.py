@@ -9,7 +9,7 @@ router.register(r'locations', views.LocationViewSet)
 
 urlpatterns = [
     path('trails/manage/', views.trail_manage, name='trail_manage'),
-    #path('', include(router.urls)),
+    path('', include(router.urls)),
     
     
 ]
