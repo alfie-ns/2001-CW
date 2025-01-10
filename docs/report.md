@@ -4,9 +4,9 @@ GITHUB: **[https://github.com/alfie-ns/2001-cw](https://github.com/alfie-ns/2001
 
 DOCKER: oladeanio/trail-api {
 
-1- `docker pull oladeanio/trail-api:latest`
+1-  `docker pull oladeanio/trail-api:latest`
 
-2- `docker run -p 8000:8000 oladeanio/trail-api:latest` (port 8000 for Django)
+2-  `docker run -it -p 8000:8000--nametrail-api-containeroladeanio/trail-api:latest`
 
 }
 
