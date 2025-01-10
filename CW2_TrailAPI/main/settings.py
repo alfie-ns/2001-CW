@@ -94,17 +94,20 @@ WSGI_APPLICATION = 'main.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': { # fetch all variables from .env file
+    'default': {
         'ENGINE': 'mssql',
         'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': os.getenv('DB_HOST'),
-        'PORT': '1433', # default port for SQL Server
+        'PORT': '1433',
         'OPTIONS': {
-            'driver': 'ODBC Driver 18 for SQL Server', 
-            'extra_params': 'TrustServerCertificate=yes;Encrypt=yes;', # ensure connection
-        }
+            'driver': 'ODBC Driver 18 for SQL Server',
+            'connect_timeout': 60,
+            'query_timeout': 60,
+            'extra_params': 'TrustServerCertificate=yes;Encrypt=yes;MultiSubnetFailover=Yes;',
+            'isolation_level': 'READ UNCOMMITTED'
+        },
     }
 }
 
