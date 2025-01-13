@@ -6,7 +6,11 @@ DOCKER: oladeanio/trail-api {
 
 1-  `docker pull oladeanio/trail-api:latest`
 
-2-  `docker run -it -p 8000:8000--nametrail-api-containeroladeanio/trail-api:latest`
+2-  `docker run -it -p 8000:8000--nametrail-api-container oladeanio/trail-api:latest`
+
+---
+
+to kill docker: `docker stop $(docker ps -aq) && docker rm $(docker ps -aq)`
 
 }
 
